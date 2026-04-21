@@ -359,14 +359,18 @@ body {
 }
 @media (max-width: 768px) {
 
-    .left,
-    .right {
-        text-align: center;   /* 🔥 key fix */
+     .date-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;   /* tighter spacing */
     }
 
-    .date-box {
-        grid-template-columns: 1fr;
-        gap: 6px;
+    .left, .right {
+        text-align: center;
+        font-size: 14px;
+        letter-spacing: 4px;
+        color: #8e7cc3;
     }
     .card {
         width: 90%;
@@ -409,11 +413,7 @@ body {
     }
 
     /* DATE (most important fix) */
-    .date-box {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 6px;
-    }
+    
 
     .center::before,
     .center::after {
@@ -425,7 +425,7 @@ body {
     }
 
     .big-date {
-        font-size: 44px;
+        font-size: 46px;
     }
 
     .small {
