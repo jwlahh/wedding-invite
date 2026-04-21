@@ -14,7 +14,7 @@
 
 html, body {
     height: 100%;
-    overflow: hidden; /* disables scroll */
+    margin: 0;
 }
 body {
     margin: 0;
@@ -285,10 +285,36 @@ body {
     font-size: 18px;
     opacity: 0.5;
     animation: fall linear infinite;
+    z-index: 1;
+}
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
 }
 
-@keyframes fall {
-    to { transform: translateY(100vh); }
+.flower.heavy {
+    position: absolute;
+    top: -80px;
+
+    color: #8e7cc3;
+    opacity: 0.9;
+    z-index: 10000;
+    animation: heavyFall linear forwards;
+}
+
+@keyframes heavyFall {
+    0% {
+        transform: translateY(-80px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(120vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
 /* LOADER */
@@ -300,6 +326,15 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    transition: opacity 0.8s ease;
+
+    overflow: hidden; /* keeps explosion inside loader */
+}
+
+
+#loader.fade-out {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .loader-svg { width: 500px; }
@@ -542,11 +577,54 @@ for(let i=0;i<12;i++){
     document.body.appendChild(f);
 }
 
+function flowerShower() {
+    const loader = document.getElementById("loader");
+
+    for (let i = 0; i < 200; i++) {   // 🌸 LOTS of flowers
+
+        let f = document.createElement("div");
+        f.className = "flower heavy";
+        f.innerHTML = Math.random() > 0.5 ? "❀" : "✿";
+
+        // completely random position
+        f.style.left = Math.random() * 100 + "vw";
+
+        // random size (depth effect)
+        f.style.fontSize = (14 + Math.random() * 14) + "px";
+
+        // random fall duration
+        f.style.animationDuration = (1.8 + Math.random() * 1.5) + "s";
+
+        // random delay (THIS removes line effect)
+        f.style.animationDelay = (Math.random() * 0.8) + "s";
+
+        loader.appendChild(f);
+
+        setTimeout(() => f.remove(), 3000);
+    }
+}
+
 /* loader */
 window.addEventListener("load", () => {
+
     setTimeout(() => {
-        document.getElementById("loader").style.display = "none";
-    }, 3500);
+
+        // 🌸 start heavy random shower
+        flowerShower();
+
+        const loader = document.getElementById("loader");
+
+        // fade during shower
+        setTimeout(() => {
+            loader.classList.add("fade-out");
+
+            setTimeout(() => {
+                loader.style.display = "none";
+            }, 800);
+
+        }, 1000);
+
+    }, 3000); // after AS animation
 });
 
 function fitCard() {
