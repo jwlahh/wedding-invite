@@ -6,12 +6,12 @@
 
 <title>Anagha 💜 Sreejith</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Parisienne&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Montserrat', sans-serif;
     background: radial-gradient(circle at 30% 20%, #f3ecfa, #e6d9f2 40%, #f6f3ee 100%);
     overflow-x: hidden;
     overflow-y: auto;
@@ -76,52 +76,112 @@ body {
 .card::after { bottom: -40px; right: -40px; }
 
 /* TEXT */
-.top { font-size: 28px; color: #7b4ca0; }
+.top {
+    font-size: 32px;
+    color: #7b4ca0;
+}
+
+.om-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+    margin: 8px auto 0;
+
+    font-size: 14px;
+    color: #b39ddb;
+    letter-spacing: 2px;
+    opacity: 0.9;
+}
 
 .title {
     font-family: 'Playfair Display', serif;
     font-size: 36px;
-    margin: 10px 0;
-    background: linear-gradient(45deg, #7b4ca0, #b39ddb);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color:#7b4ca0;
 }
-
 .sub { font-size: 18px; color: #777; }
 
 /* NAMES */
 .names {
-    margin: 30px 0;
-    font-size: 36px;
-    font-weight: 600;
-    transition: 0.3s;
+    font-family: 'Parisienne', cursive;
+    font-size: 52px;
+    line-height: 1.4;
+    letter-spacing: 1px;
+
+   color:#6d3f9c;
+   transition: all 0.4s ease;
 }
 
-.names:hover { color: #7b4ca0; letter-spacing: 2px; }
 
+.names:hover {
+    text-shadow:
+        0 0 8px rgba(179,157,219,0.6),
+        0 0 16px rgba(179,157,219,0.4),
+        0 0 24px rgba(179,157,219,0.2);
+
+    transform: scale(1.03);
+}
+
+.names br:nth-child(2) {
+    font-size: 28px;
+}
+.heart {
+    display: block;
+    font-size: 30px;
+    color: #b39ddb;
+    margin: 8px 0;
+}
 /* DATE */
 .date-box {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    align-items: center;
     justify-content: center;
-    gap: 25px;
+    gap: 20px;
 
-    margin: 25px 0;
+    margin: 35px 0;
 
-    font-size: 22px;
-    letter-spacing: 2px;
+    font-family: 'Playfair Display', serif;
 }
 
+/* side text */
+.date-box .small {
+    font-size: 25px;
+    letter-spacing: 4px;
+    color: #8e7cc3;
+}
+
+/* BIG DATE */
 .big-date {
-    font-size: 32px;
-    color: #7b4ca0;
+    font-size: 56px;
     font-weight: 600;
+    letter-spacing: 5px;
+    color: #6d3f9c;
+
+    position: relative;
 }
+
+
+.separator {
+    width: 1px;
+    height: 25px;
+    background: #d6c7ec;
+}
+
 /* VENUE */
 .venue { font-size: 20px; margin-top: 10px; }
 
 .location a {
     color: #7b4ca0;
     text-decoration: none;
+    transition: all 0.3s ease;
+}
+.location a:hover {
+    letter-spacing: 1.5px;
+    color: #6d3f9c;
 }
 
 /* COUNTDOWN (FIXED) */
@@ -137,14 +197,16 @@ body {
 }
 
 .number {
-    font-size: 28px;
-    color: #7b4ca0;
-    font-weight: 500;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #6d3f9c;
 }
-
 .label {
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
     color: #999;
 }
 
@@ -193,11 +255,117 @@ body {
     to { stroke-dashoffset: 0; }
 }
 .divider {
-    width: 70px;
-    height: 1px;
-    margin: 25px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 28px auto;
+}
 
-    background: linear-gradient(to right, transparent, #b39ddb, transparent);
+/* left + right lines */
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #cbb7e6);
+}
+
+/* reverse gradient for right side */
+.divider::after {
+    background: linear-gradient(to left, transparent, #cbb7e6);
+}
+
+/* center symbol */
+.divider span {
+    font-size: 20px;
+    color: #b39ddb;
+}
+@media (max-width: 768px) {
+
+    /* overall padding */
+    .card {
+        width: 90%;
+        padding: 30px 20px;
+        border-radius: 20px;
+    }
+
+    /* OM */
+    .top {
+        font-size: 24px;
+    }
+
+    .om-line {
+        font-size: 12px;
+    }
+
+    /* title */
+    .title {
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+
+    .sub {
+        font-size: 14px;
+    }
+
+    /* names */
+    .names {
+        font-size: 40px;
+        line-height: 1.3;
+    }
+
+    .heart {
+        font-size: 20px;
+    }
+
+    /* divider */
+    .divider span {
+        font-size: 14px;
+    }
+
+    /* DATE (most important fix) */
+    .date-box {
+        grid-template-columns: auto;
+        gap: 10px;
+    }
+
+    .separator {
+        display: none; /* remove vertical lines */
+    }
+
+    .big-date {
+        font-size: 44px;
+    }
+
+    .small {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+    /* venue */
+    .venue {
+        font-size: 16px;
+    }
+
+    .location a {
+        font-size: 14px;
+    }
+
+    /* countdown */
+    .countdown {
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .number {
+        font-size: 28px;
+    }
+
+    .label {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
 }
 </style>
 </head>
@@ -258,25 +426,32 @@ body {
 <div class="container">
 <div class="card">
 
-<div class="top">ॐ</div>
+<div class="top">
+    ॐ
+    <div class="om-line"> ༻❁༺ </div>
+</div>
 
 <div class="title">Please Join Us On Our Special Day</div>
 <div class="sub">Together with your families</div>
-<div class="divider"></div>
+<div class="divider"><span>⚜</span></div>
 <div class="names">
     Anagha O Sudhakar<br>
-    ♡<br>
+    <span class="heart">♡</span>
     Sreejith Jinachandran
 </div>
 
-<div class="divider"></div>
+<div class="divider"><span>⚜</span></div>
 <div class="date-box">
-<div>MAY</div>
-<div class="big-date">09</div>
-<div>11:00 AM</div>
+    <div class="small">MAY</div>
+    <div class="separator"></div>
+
+    <div class="big-date">09</div>
+    <div class="separator"></div>
+
+    <div class="small">11:00 AM</div>
 </div>
 
-<div class="divider"></div>
+<div class="divider"><span>⚜</span></div>
 <div class="venue">
 Palliyalil Auditorium<br>
 Kulappulli, Shoranur
@@ -288,7 +463,7 @@ Join us here — view on map
 </a>
 </div>
 
-<div class="divider"></div>
+<div class="divider"><span>⚜</span></div>
 <div class="countdown">
 <div class="time-box"><span class="number" id="days"></span><div class="label">DAYS</div></div>
 <div class="time-box"><span class="number" id="hours"></span><div class="label">HOURS</div></div>
