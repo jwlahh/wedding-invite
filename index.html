@@ -359,7 +359,15 @@ body {
 }
 @media (max-width: 768px) {
 
-    /* overall padding */
+    .left,
+    .right {
+        text-align: center;   /* 🔥 key fix */
+    }
+
+    .date-box {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
     .card {
         width: 90%;
         padding: 30px 20px;
@@ -404,7 +412,7 @@ body {
     .date-box {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 8px;
+    gap: 6px;
     }
 
     .center::before,
